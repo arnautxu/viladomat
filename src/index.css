@@ -225,10 +225,19 @@ p { margin: 0; }
   color: rgba(244,239,230,0.045);
   pointer-events: none;
   user-select: none;
-  z-index: 1;
+  z-index: 2;
   letter-spacing: -0.04em;
 }
 @media (max-width: 720px) { .hero__deco { display: none; } }
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(to top, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.55) 45%, rgba(10,10,10,0.15) 100%);
+  pointer-events: none;
+}
 
 .hero__inner {
   position: relative;

@@ -43,6 +43,7 @@ export default function App() {
           shineDirection="left"
           mixBlendMode="normal"
         />
+        <div className="hero__overlay" aria-hidden />
         <div className="hero__deco" aria-hidden>V</div>
         <div className="shell hero__inner">
           <Reveal delay={1}>
