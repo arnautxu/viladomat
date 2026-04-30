@@ -27,6 +27,14 @@ export default function App() {
             Viladomat <em>lliura</em><br />
             en 4 dies<span className="accent">.</span>
           </Reveal>
+          <Reveal delay={3}>
+            <div className="hero__cta">
+              <a href="#contacte" className="cta-primary">
+                Escriviu-nos avui <span aria-hidden>→</span>
+              </a>
+              <a href="#serveis" className="cta-ghost">Veure serveis</a>
+            </div>
+          </Reveal>
           <Reveal>
             <dl className="hero__meta">
               <div>
@@ -138,6 +146,11 @@ export default function App() {
                 </div>
               </Reveal>
             </div>
+            <Reveal delay={1}>
+              <a href="#contacte" className="cta-text">
+                Expliqueu-nos el vostre projecte <span aria-hidden>→</span>
+              </a>
+            </Reveal>
           </div>
         </div>
       </section>
