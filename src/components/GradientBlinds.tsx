@@ -249,23 +249,30 @@ export default function GradientBlinds({
 
     const onPointerMove = (e: PointerEvent) => {
       const rect = canvas.getBoundingClientRect()
+      // Skip if outside the canvas bounds — keeps spotlight in last position rather than jumping
+      if (
+        e.clientX < rect.left || e.clientX > rect.right ||
+        e.clientY < rect.top  || e.clientY > rect.bottom
+      ) return
       const scale = renderer.dpr || 1
       const x = (e.clientX - rect.left) * scale
       const y = (rect.height - (e.clientY - rect.top)) * scale
       mouseTargetRef.current = [x, y]
       if (mouseDampening <= 0) uniforms.iMouse.value = [x, y]
     }
-    canvas.addEventListener('pointermove', onPointerMove)
+    // Listen on window so events keep firing even when mouse is over hero text/CTA
+    window.addEventListener('pointermove', onPointerMove, { passive: true })
 
     const loop = (t: number) => {
       rafRef.current = requestAnimationFrame(loop)
       uniforms.iTime.value = t * 0.001
       if (mouseDampening > 0) {
         if (!lastTimeRef.current) lastTimeRef.current = t
-        const dt = (t - lastTimeRef.current) / 1000
+        // Clamp dt to avoid catastrophic jumps after a tab is restored from background
+        const dt = Math.min(0.1, Math.max(0, (t - lastTimeRef.current) / 1000))
         lastTimeRef.current = t
         const tau = Math.max(1e-4, mouseDampening)
-        let factor = Math.min(1, 1 - Math.exp(-dt / tau))
+        const factor = Math.min(1, 1 - Math.exp(-dt / tau))
         const target = mouseTargetRef.current
         const cur = uniforms.iMouse.value
         cur[0] += (target[0] - cur[0]) * factor
@@ -279,9 +286,14 @@ export default function GradientBlinds({
     }
     rafRef.current = requestAnimationFrame(loop)
 
+    // Reset time accumulator when tab becomes visible again
+    const onVisibility = () => { if (!document.hidden) lastTimeRef.current = 0 }
+    document.addEventListener('visibilitychange', onVisibility)
+
     return () => {
       cancelAnimationFrame(rafRef.current)
-      canvas.removeEventListener('pointermove', onPointerMove)
+      window.removeEventListener('pointermove', onPointerMove)
+      document.removeEventListener('visibilitychange', onVisibility)
       ro.disconnect()
       if (canvas.parentElement === container) container.removeChild(canvas)
       programRef.current = null
