@@ -54,28 +54,26 @@ const frag = `
     float mInf = smoothstep(0.7, 0.0, md);
     n += mInf * 0.18;
 
-    // paper colors
-    vec3 paper = vec3(0.957, 0.937, 0.902);
-    vec3 paperShade = vec3(0.886, 0.847, 0.764);
-    vec3 ink = vec3(0.04, 0.04, 0.04);
+    // dark ink colors — warm near-black with subtle variance
+    vec3 base  = vec3(0.036, 0.033, 0.030);
+    vec3 shade = vec3(0.060, 0.054, 0.046);
     vec3 accent = vec3(1.0, 0.231, 0.122);
 
-    vec3 col = mix(paper, paperShade, smoothstep(0.35, 0.75, n));
+    vec3 col = mix(base, shade, smoothstep(0.3, 0.72, n));
 
-    // faint accent bloom near mouse
-    col = mix(col, accent, mInf * 0.06);
+    // warm accent ember near mouse
+    col = mix(col, accent * 0.18, mInf * 0.4);
 
-    // vignette
-    float v = smoothstep(1.2, 0.4, length(uv - 0.5));
-    col *= mix(0.92, 1.0, v);
+    // vignette — edges go slightly lighter to frame content
+    float v = smoothstep(0.3, 1.1, length(uv - 0.5));
+    col += shade * v * 0.35;
 
-    // film grain
-    float g = (hash(uv * uRes + uTime) - 0.5) * 0.06;
+    // subtle film grain (finer on dark)
+    float g = (hash(uv * uRes + uTime) - 0.5) * 0.028;
     col += g;
 
-    // subtle ink scatter at edges
-    float edge = smoothstep(0.9, 1.0, length(uv - 0.5) * 1.4);
-    col = mix(col, ink, edge * 0.04);
+    // clamp to prevent banding
+    col = clamp(col, 0.0, 1.0);
 
     gl_FragColor = vec4(col, 1.0);
   }

@@ -26,6 +26,16 @@ export const services = [
   },
 ] as const
 
+export const webService = {
+  num: '06',
+  badge: 'Nou · 2025',
+  name: 'Disseny i Programació',
+  italic: 'de Webs',
+  desc: 'Del paper a la pantalla. Webs a mida dissenyades amb la mateixa cura editorial que posem a cada impressió. Identitat visual, estructura, codi i llançament — tot en un sol lloc.',
+  promise: 'Un lloc web que funciona i que representa qui sou de veritat.',
+  tags: ['Disseny UI/UX', 'Responsive & Mòbil', 'React / Next.js', 'E-commerce', 'SEO Tècnic'],
+} as const
+
 export const clients = [
   'Bigas Global',
   'Cafés Cornellà',
