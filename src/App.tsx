@@ -181,30 +181,30 @@ export default function App() {
           <dl className="contact__grid">
             <Reveal delay={1}>
               <div className="contact__item">
-                <dt>Email</dt>
-                <dd><a href="mailto:info@viladomatserveis.com">info@viladomatserveis.com</a></dd>
+                <dt>Telèfon</dt>
+                <dd><a href="tel:+34617206470">617 20 64 70</a></dd>
               </div>
             </Reveal>
             <Reveal delay={2}>
               <div className="contact__item">
-                <dt>Visita</dt>
-                <dd>Us venim a veure. Digueu quan i on.</dd>
+                <dt>Email</dt>
+                <dd><a href="mailto:fpugibet@me.com">fpugibet@me.com</a></dd>
               </div>
             </Reveal>
             <Reveal delay={3}>
               <div className="contact__item">
-                <dt>Horari</dt>
-                <dd>El vostre horari, el nostre horari.</dd>
+                <dt>Instagram</dt>
+                <dd>
+                  <a href="https://www.instagram.com/viladomat_serveis_grafics/" target="_blank" rel="noreferrer">
+                    @viladomat_serveis_grafics ↗
+                  </a>
+                </dd>
               </div>
             </Reveal>
             <Reveal delay={4}>
               <div className="contact__item">
-                <dt>Web</dt>
-                <dd>
-                  <a href="https://www.viladomatserveis.com" target="_blank" rel="noreferrer">
-                    viladomatserveis.com ↗
-                  </a>
-                </dd>
+                <dt>Visita</dt>
+                <dd>Us venim a veure. Digueu quan i on.</dd>
               </div>
             </Reveal>
           </dl>
