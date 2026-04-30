@@ -205,7 +205,8 @@ p { margin: 0; }
   background: var(--ink);
   color: var(--paper);
 }
-.hero__canvas {
+.hero__canvas,
+.gradient-blinds-container {
   position: absolute;
   inset: 0;
   z-index: 0;

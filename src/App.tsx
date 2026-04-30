@@ -1,4 +1,4 @@
-import GrainBackground from './components/GrainBackground'
+import GradientBlinds from './components/GradientBlinds'
 import Reveal from './components/Reveal'
 import Cursor from './components/Cursor'
 import ServiceAccordion from './components/ServiceAccordion'
@@ -28,7 +28,21 @@ export default function App() {
       </div>
 
       <header id="top" className="hero">
-        <GrainBackground />
+        <GradientBlinds
+          gradientColors={['#0a0a0a', '#160503', '#2e0905', '#ff3b1f', '#2e0905', '#160503', '#0a0a0a']}
+          angle={0}
+          noise={0.18}
+          blindCount={12}
+          blindMinWidth={90}
+          spotlightRadius={0.55}
+          spotlightSoftness={1.1}
+          spotlightOpacity={0.9}
+          mouseDampening={0.14}
+          mirrorGradient={false}
+          distortAmount={0}
+          shineDirection="left"
+          mixBlendMode="normal"
+        />
         <div className="hero__deco" aria-hidden>V</div>
         <div className="shell hero__inner">
           <Reveal delay={1}>
