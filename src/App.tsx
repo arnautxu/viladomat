@@ -4,6 +4,7 @@ import Cursor from './components/Cursor'
 import ServiceAccordion from './components/ServiceAccordion'
 import StatCounter from './components/StatCounter'
 import SpotlightNav from './components/SpotlightNav'
+import { IconInstagram, IconPhone } from './components/Icons'
 import { services, clients, webService } from './data'
 
 export default function App() {
@@ -13,7 +14,17 @@ export default function App() {
 
       <div className="nav">
         <a href="#top" className="nav__brand">Viladomat<sup>SL</sup></a>
-        <SpotlightNav />
+        <div className="nav__right">
+          <SpotlightNav />
+          <div className="nav__icons">
+            <a href="tel:+34617206470" className="nav__icon" aria-label="Trucar">
+              <IconPhone />
+            </a>
+            <a href="https://www.instagram.com/viladomat_serveis_grafics/" target="_blank" rel="noreferrer" className="nav__icon" aria-label="Instagram">
+              <IconInstagram />
+            </a>
+          </div>
+        </div>
       </div>
 
       <header id="top" className="hero">
@@ -227,7 +238,16 @@ export default function App() {
       <footer className="footer">
         <div className="shell footer__inner">
           <div>© {new Date().getFullYear()} Viladomat Serveis Gràfics i Maquetació, S.L.</div>
-          <div>Catalunya · Impressió · Maquetació · Retolació</div>
+          <div className="footer__icons">
+            <a href="tel:+34617206470" className="footer__icon" aria-label="Trucar">
+              <IconPhone size={16} />
+              <span>617 20 64 70</span>
+            </a>
+            <a href="https://www.instagram.com/viladomat_serveis_grafics/" target="_blank" rel="noreferrer" className="footer__icon" aria-label="Instagram">
+              <IconInstagram size={16} />
+              <span>@viladomat_serveis_grafics</span>
+            </a>
+          </div>
         </div>
       </footer>
     </div>

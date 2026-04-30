@@ -89,6 +89,30 @@ p { margin: 0; }
   font-variation-settings: 'opsz' 24, 'wdth' 100;
 }
 .nav__brand sup { font-size: 10px; vertical-align: super; opacity: .6; margin-left: 2px; font-family: var(--sans); }
+.nav__right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  pointer-events: auto;
+}
+.nav__icons {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.nav__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: var(--paper);
+  mix-blend-mode: difference;
+  transition: opacity .25s ease;
+}
+.nav__icon:hover { opacity: 0.6; }
+@media (max-width: 540px) { .nav__icons { display: none; } }
 
 /* ── SPOTLIGHT NAV PILL ── */
 .spotlight-nav {
@@ -790,7 +814,18 @@ p { margin: 0; }
   text-transform: uppercase;
   border-top: 1px solid rgba(244,239,230,0.12);
 }
-.footer__inner { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.footer__inner { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+.footer__icons { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.footer__icon {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(244,239,230,0.5);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  transition: color .25s ease;
+}
+.footer__icon:hover { color: var(--paper); }
 
 .reveal {
   opacity: 0;
